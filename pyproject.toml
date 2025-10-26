@@ -1,0 +1,23 @@
+[build-system]
+requires = ["hatchling >= 1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "purejxr"
+version = "0.1.0"
+authors = [
+    { name="Pyogenics", email="" },
+]
+description = "Pure python library to handle JPEG XR data."
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+license = "MIT"
+license-files = ["LICENSE"]
+
+[project.urls]
+Homepage = "https://github.com/Pyogenics/purejxr"
+Issues = "https://github.com/Pyogenics/purejxr/issues"
