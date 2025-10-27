@@ -23,6 +23,16 @@ CODESTREAM_IMAGE_HEADER_SIGNATURE = b"WMPHOTO\x00"
 """
 Data
 """
+class CodestreamSpatialTransform(IntEnum):
+    """Enum which defines the spatial transform of the output image."""
+    TOP_LEFT = 0
+    TOP_RIGHT = 1
+    BOTTOM_LEFT = 2
+    BOTTOM_RIGHT = 3
+    RIGHT_TOP = 4
+    RIGHT_BOTTOM = 5
+
+
 class CodestreamOverlapMode(IntEnum):
     """This enum specifies the overlap processing mode of the image.
     
@@ -74,7 +84,7 @@ class CodestreamImageHeader:
     reserved_c: int
     tiling: bool
     frequency_mode_layout: bool
-    spatial_transform: int
+    spatial_transform: CodestreamSpatialTransform
     index_table_present: bool
     overlap_mode: CodestreamOverlapMode
     short_header: bool
@@ -117,7 +127,7 @@ def read_image_header(stream: BinaryIO) -> CodestreamImageHeader:
     reserved_c = bit_stream.read("uint:3")
     tiling = bit_stream.read("bool")
     frequency_mode_layout = bit_stream.read("bool")
-    spatial_transform = bit_stream.read("uint:3")
+    spatial_transform = CodestreamSpatialTransform(bit_stream.read("uint:3"))
     index_table_present = bit_stream.read("bool")
 
     overlap_mode = CodestreamOverlapMode.NONE # XXX: undefined behaviour when overlap_mode is not one of the known values?
