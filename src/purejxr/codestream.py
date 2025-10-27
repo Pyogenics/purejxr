@@ -26,11 +26,13 @@ Data
 class CodestreamSpatialTransform(IntEnum):
     """Enum which defines the spatial transform of the output image."""
     TOP_LEFT = 0
-    TOP_RIGHT = 1
-    BOTTOM_LEFT = 2
+    BOTTOM_LEFT = 1
+    TOP_RIGHT = 2
     BOTTOM_RIGHT = 3
     RIGHT_TOP = 4
     RIGHT_BOTTOM = 5
+    LEFT_TOP = 6
+    LEFT_BOTTOM = 7
 
 
 class CodestreamOverlapMode(IntEnum):
