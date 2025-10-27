@@ -24,6 +24,16 @@ def read_uint16(stream: BinaryIO, endian: str = "little") -> int:
     return int.from_bytes(data, endian, signed=False)
 
 
+def read_int12(stream: BinaryIO, endian: str = "little") -> int:
+    data = stream.read(3)
+    return int.from_bytes(data, endian, signed=True)
+
+
+def read_uint12(stream: BinaryIO, endian: str = "little") -> int:
+    data = stream.read(3)
+    return int.from_bytes(data, endian, signed=False)
+
+
 def read_int8(stream: BinaryIO) -> int:
     data = stream.read(1)
     return int.from_bytes(data, signed=True)
